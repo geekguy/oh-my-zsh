@@ -1,16 +1,16 @@
-# zsh
-
 EMOJI=(😄 😁 😈 😋 😎 😜 😸)
 
 function random_emoji {
   echo -n "$EMOJI[$RANDOM%$#EMOJI+1]"
 }
 
-PROMPT="$(random_emoji)  "
-RPROMPT='%c'
+local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ %s)"
 
-# if you want to show git branch uncomment next lines
-RPROMPT='%{$fg_bold[colour255]%}%c$(git_prompt_info)'
+PROMPT='$(random_emoji) ${ret_status}%{$fg_bold[green]%}%p%{$fg[cyan]%}%c %{$fg_bold[blue]%}%{$fg_bold[blue]%} % %{$reset_color%}'
 
-ZSH_THEME_GIT_PROMPT_PREFIX=" : "
-ZSH_THEME_GIT_PROMPT_SUFFIX=" "
+RPROMPT='%{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}% '
+
+ZSH_THEME_GIT_PROMPT_PREFIX="git:(%{$fg[red]%}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
