@@ -6,7 +6,7 @@ function random_emoji {
 
 local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ %s)"
 
-PROMPT='$(random_emoji) ${ret_status}%{$fg_bold[green]%}%p%{$fg[cyan]%}%c %{$fg_bold[blue]%}%{$fg_bold[blue]%} % %{$reset_color%}'
+PROMPT='$(random_emoji) %{$fg_bold[green]%}%p%{$fg[cyan]%} %~ ${ret_status}%{$fg_bold[blue]%}%{$fg_bold[blue]%}%{$reset_color%}'
 
 RPROMPT='%{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}% '
 
